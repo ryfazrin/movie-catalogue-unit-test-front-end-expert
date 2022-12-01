@@ -43,5 +43,7 @@ describe('Liking A Movie', () => {
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
     const movie = await FavoriteMovieIdb.getMovie(1);
     expect(movie).toEqual({ id: 1 });
+
+    FavoriteMovieIdb.deleteMovie(1);
   });
 });
