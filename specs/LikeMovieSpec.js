@@ -2,9 +2,15 @@ import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 import LikeButtonInitiator from '../src/scripts/utils/like-button-initiator';
 
 describe('Liking A Movie', () => {
-  it('should show the like button when the movie has not been liked before', async () => {
+  const addLikeButtonContainer = () => {
     document.body.innerHTML = '<div id="likeButtonContainer"></div>';
+  };
 
+  beforeEach(() => {
+    addLikeButtonContainer();
+  });
+
+  it('should show the like button when the movie has not been liked before', async () => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
@@ -17,8 +23,6 @@ describe('Liking A Movie', () => {
   });
 
   it('should not show the like button when the movie has not been liked before', async () => {
-    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
@@ -31,8 +35,6 @@ describe('Liking A Movie', () => {
   });
 
   it('should be able to like te movie', async () => {
-    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
