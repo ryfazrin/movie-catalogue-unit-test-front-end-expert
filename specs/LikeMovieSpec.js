@@ -1,5 +1,6 @@
 import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 import LikeButtonInitiator from '../src/scripts/utils/like-button-initiator';
+import * as TestFactories from './helpers/testFactories';
 
 describe('Liking A Movie', () => {
   const addLikeButtonContainer = () => {
@@ -11,12 +12,7 @@ describe('Liking A Movie', () => {
   });
 
   it('should show the like button when the movie has not been liked before', async () => {
-    await LikeButtonInitiator.init({
-      likeButtonContainer: document.querySelector('#likeButtonContainer'),
-      movie: {
-        id: 1,
-      },
-    });
+    await TestFactories.createLikeButtonPresenterWithMovie({ id: 1 });
 
     expect(document.querySelector('[aria-label="like this movie"]'))
       .toBeTruthy();
