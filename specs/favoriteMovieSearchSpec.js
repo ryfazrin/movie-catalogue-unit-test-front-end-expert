@@ -11,6 +11,8 @@ describe('Search movies', () => {
   });
   
   it('should be able to capture the query typed by the user', () => {
-
+    const qeuryElement = document.getElementById('query');
+    qeuryElement.value = 'film a';
+    qeuryElement.dispatchEvent(new Event('change'));
   });
 });
