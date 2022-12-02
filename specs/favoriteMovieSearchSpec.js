@@ -1,3 +1,5 @@
+import FavoriteMovieSearchPresenter from "../src/scripts/views/pages/liked-movies/favorite-movie-search-presenter";
+
 describe('Search movies', () => {
   beforeEach(() => {
     document.body.innerHTML = `
@@ -15,6 +17,6 @@ describe('Search movies', () => {
     queryElement.value = 'film a';
     queryElement.dispatchEvent(new Event('change'));
 
-    expect((new FavoriteMovieSearchPresenter())).toEqual('film a');
+    expect((new FavoriteMovieSearchPresenter()).userQuery).toEqual('film a');
   });
 });
