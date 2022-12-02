@@ -13,10 +13,11 @@ describe('Search movies', () => {
   });
   
   it('should be able to capture the query typed by the user', () => {
+    const presenter = new FavoriteMovieSearchPresenter();
     const queryElement = document.getElementById('query');
     queryElement.value = 'film a';
     queryElement.dispatchEvent(new Event('change'));
 
-    expect((new FavoriteMovieSearchPresenter()).userQuery).toEqual('film a');
+    expect(presenter.userQuery).toEqual('film a');
   });
 });
