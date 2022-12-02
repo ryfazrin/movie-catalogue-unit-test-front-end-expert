@@ -4,6 +4,12 @@ import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 describe('Search movies', () => {
   let presenter;
 
+  const searchMovies = (query) => {
+    const queryElement = document.getElementById('query');
+    queryElement.value = query;
+    queryElement.dispatchEvent(new Event('change'));
+  };
+
   beforeEach(() => {
     document.body.innerHTML = `
       <div id="movie-search-container">
@@ -19,17 +25,13 @@ describe('Search movies', () => {
   });
 
   it('should be able to capture the query typed by the user', () => {
-    const queryElement = document.getElementById('query');
-    queryElement.value = 'film a';
-    queryElement.dispatchEvent(new Event('change'));
+    searchMovies('film a');
 
     expect(presenter.latestQuery).toEqual('film a');
   });
 
   it('should ask the model to search for liked movies', () => {
-    const queryElement = document.getElementById('query');
-    queryElement.value = 'film a';
-    queryElement.dispatchEvent(new Event('change'));
+    searchMovies('film a');
 
     expect(FavoriteMovieIdb.searchMovies).toHaveBeenCalledWith('film a');
   });
