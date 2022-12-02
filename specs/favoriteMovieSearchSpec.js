@@ -10,7 +10,7 @@ describe('Search movies', () => {
     queryElement.dispatchEvent(new Event('change'));
   };
 
-  beforeEach(() => {
+  const setMovieSearchContainer = () => {
     document.body.innerHTML = `
       <div id="movie-search-container">
         <input type="text" id="query">
@@ -19,9 +19,18 @@ describe('Search movies', () => {
         </div>
       </div>
     `;
+  };
 
+  const constructPresenter = () => {
     spyOn(FavoriteMovieIdb, 'searchMovies');
-    presenter = new FavoriteMovieSearchPresenter({ favoriteMovies: FavoriteMovieIdb });
+    presenter = new FavoriteMovieSearchPresenter({
+      favoriteMovies: FavoriteMovieIdb,
+    });
+  };
+
+  beforeEach(() => {
+    setMovieSearchContainer();
+    constructPresenter();
   });
 
   it('should be able to capture the query typed by the user', () => {
