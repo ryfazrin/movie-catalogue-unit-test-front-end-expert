@@ -67,7 +67,13 @@ describe('Search movies', () => {
       .toEqual('-');
   });
 
-  fit('should show the movies found by Favorite Movies', () => {
+  it('should show the movies found by Favorite Movies', (done) => {
+    document.getElementById('movie-search-container')
+      .addEventListener('movies:searched:updated', () => {
+        expect(document.querySelectorAll('.movie').length).toEqual(3);
+        done();
+      });
+
     FavoriteMovieIdb.searchMovies.withArgs('film a').and.returnValues([
       { id: 111, title: 'film abc' },
       { id: 222, title: 'ada juga film abcde' },
@@ -75,7 +81,5 @@ describe('Search movies', () => {
     ]);
 
     searchMovies('film a');
-
-    expect(document.querySelectorAll('.movie').length).toEqual(3);
   });
 });

@@ -20,7 +20,6 @@ class FavoriteMovieSearchPresenter {
   }
 
   _showFoundMovies(movies) {
-    console.log(movies);
     const html = movies.reduce(
       (carry, movie) => carry.concat(`
       <li class="movie">
@@ -30,6 +29,8 @@ class FavoriteMovieSearchPresenter {
       '',
     );
     document.querySelector('.movies').innerHTML = html;
+    document.getElementById('movie-search-container')
+      .dispatchEvent(new Event('movies:searched:updated'));
   }
 
   get latestQuery() {
