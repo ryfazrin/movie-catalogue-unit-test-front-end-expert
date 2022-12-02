@@ -70,7 +70,11 @@ describe('Search movies', () => {
   it('should show the movies found by Favorite Movies', (done) => {
     document.getElementById('movie-search-container')
       .addEventListener('movies:searched:updated', () => {
-        expect(document.querySelectorAll('.movie').length).toEqual(3);
+        const movieTitles = document.querySelectorAll('.movie__title');
+        expect(movieTitles.item(0).textContent).toEqual('film abc');
+        expect(movieTitles.item(1).textContent).toEqual('ada juga film abcde');
+        expect(movieTitles.item(2).textContent).toEqual('ini juga boleh film a');
+
         done();
       });
 
