@@ -14,5 +14,7 @@ describe('Search movies', () => {
     const queryElement = document.getElementById('query');
     queryElement.value = 'film a';
     queryElement.dispatchEvent(new Event('change'));
+
+    expect((new FavoriteMovieSearchPresenter())).toEqual('film a');
   });
 });
