@@ -49,5 +49,14 @@ describe('Search movies', () => {
     presenter._showFoundMovies([{ id: 1, title: 'Satu' }]);
     expect(document.querySelectorAll('.movie__title').item(0).textContent)
       .toEqual('Satu');
+
+    presenter._showFoundMovies([
+      { id: 1, title: 'Satu' },
+      { id: 2, title: 'Dua' },
+    ]);
+
+    const movieTitles = document.querySelectorAll('.movie__title');
+    expect(movieTitles.item(0).textContent).toEqual('Satu');
+    expect(movieTitles.item(1).textContent).toEqual('Dua');
   });
 });
