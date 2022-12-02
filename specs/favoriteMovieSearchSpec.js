@@ -46,12 +46,10 @@ describe('Search movies', () => {
   });
 
   it('should show the found movies', () => {
-    presenter._showFoundMovies([
-      { id: 1, title: 'Film Satu' },
-    ]);
+    presenter._showFoundMovies([{ id: 1 }]);
+    expect(document.querySelectorAll('.movie').length).toEqual(1);
 
-    const foundMovies = document.querySelectorAll('.movie');
-
-    expect(foundMovies.length).toEqual(1);
+    presenter._showFoundMovies([{ id: 1, title: 'Satu' }, { id: 2, title: 'Dua' }]);
+    expect(document.querySelectorAll('.movie').length).toEqual(2);
   });
 });
