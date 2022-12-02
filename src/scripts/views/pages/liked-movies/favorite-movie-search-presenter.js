@@ -1,6 +1,7 @@
 class FavoriteMovieSearchPresenter {
-  constructor() {
+  constructor({ favoriteMovies }) {
     this._listenToSearchRequestByUser();
+    this._favoriteMovies = favoriteMovies;
   }
 
   _listenToSearchRequestByUser() {
@@ -8,6 +9,7 @@ class FavoriteMovieSearchPresenter {
     this._queryElement.addEventListener('change', (event) => {
       console.log(event);
       this._latestQuery = event.target.value;
+      this._favoriteMovies.searchMovies(this._latestQuery);
     });
   }
 
