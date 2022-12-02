@@ -45,11 +45,9 @@ describe('Search movies', () => {
     expect(FavoriteMovieIdb.searchMovies).toHaveBeenCalledWith('film a');
   });
 
-  it('should show the found movies', () => {
-    presenter._showFoundMovies([{ id: 1 }]);
-    expect(document.querySelectorAll('.movie').length).toEqual(1);
-
-    presenter._showFoundMovies([{ id: 1, title: 'Satu' }, { id: 2, title: 'Dua' }]);
-    expect(document.querySelectorAll('.movie').length).toEqual(2);
+  it('should show the title of the found movies', () => {
+    presenter._showFoundMovies([{ id: 1, title: 'Satu' }]);
+    expect(document.querySelectorAll('.movie__title').item(0).textContent)
+      .toEqual('Satu');
   });
 });
