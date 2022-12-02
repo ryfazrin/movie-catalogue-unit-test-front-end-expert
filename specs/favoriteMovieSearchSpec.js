@@ -67,7 +67,7 @@ describe('Search movies', () => {
       .toEqual('-');
   });
 
-  it('should show the movies found by Favorite Movies', () => {
+  fit('should show the movies found by Favorite Movies', () => {
     FavoriteMovieIdb.searchMovies.withArgs('film a').and.returnValues([
       { id: 111, title: 'film abc' },
       { id: 222, title: 'ada juga film abcde' },
