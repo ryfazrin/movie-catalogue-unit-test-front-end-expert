@@ -1,4 +1,5 @@
 import FavoriteMovieSearchPresenter from "../src/scripts/views/pages/liked-movies/favorite-movie-search-presenter";
+import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 
 describe('Search movies', () => {
   beforeEach(() => {
@@ -22,8 +23,9 @@ describe('Search movies', () => {
     expect(presenter.latestQuery).toEqual('film a');
   });
 
-  it('should ask the model to search for liked movies', () => {
-    const presenter = new FavoriteMovieSearchPresenter();
+  fit('should ask the model to search for liked movies', () => {
+    spyOn(FavoriteMovieIdb, 'searchMovies');
+    const presenter = new FavoriteMovieSearchPresenter({ favoriteMovies: FavoriteMovieIdb });
 
     const queryElement = document.getElementById('query');
     queryElement.value = 'film a';
