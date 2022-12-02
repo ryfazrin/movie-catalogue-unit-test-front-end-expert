@@ -14,7 +14,8 @@ describe('Search movies', () => {
   });
   
   it('should be able to capture the query typed by the user', () => {
-    const presenter = new FavoriteMovieSearchPresenter();
+    spyOn(FavoriteMovieIdb, 'searchMovies');
+    const presenter = new FavoriteMovieSearchPresenter({ favoriteMovies: FavoriteMovieIdb });
 
     const queryElement = document.getElementById('query');
     queryElement.value = 'film a';
@@ -23,7 +24,7 @@ describe('Search movies', () => {
     expect(presenter.latestQuery).toEqual('film a');
   });
 
-  fit('should ask the model to search for liked movies', () => {
+  it('should ask the model to search for liked movies', () => {
     spyOn(FavoriteMovieIdb, 'searchMovies');
     const presenter = new FavoriteMovieSearchPresenter({ favoriteMovies: FavoriteMovieIdb });
 
