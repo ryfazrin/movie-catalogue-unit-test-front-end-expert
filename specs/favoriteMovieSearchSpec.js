@@ -111,4 +111,10 @@ describe('Search movies', () => {
       expect(favoriteMovies.getAllMovies).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('When no favorite movies could be found', () => {
+    it('should show the empty message', () => {
+      favoriteMovies.searchMovies.withArgs('film a').and.returnValues([]);
+    });
+  });
 });
