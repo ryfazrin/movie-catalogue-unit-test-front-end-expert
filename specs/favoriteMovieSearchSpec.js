@@ -18,6 +18,7 @@ class FavoriteMovieSearchView {
 describe('Search movies', () => {
   let presenter;
   let favoriteMovies;
+  let view;
 
   const searchMovies = (query) => {
     const queryElement = document.getElementById('query');
@@ -26,7 +27,7 @@ describe('Search movies', () => {
   };
 
   const setMovieSearchContainer = () => {
-    const view = new FavoriteMovieSearchView();
+    view = new FavoriteMovieSearchView();
     document.body.innerHTML = view.getTemplate();
   };
 
@@ -34,6 +35,7 @@ describe('Search movies', () => {
     favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
     presenter = new FavoriteMovieSearchPresenter({
       favoriteMovies,
+      view,
     });
   };
 
