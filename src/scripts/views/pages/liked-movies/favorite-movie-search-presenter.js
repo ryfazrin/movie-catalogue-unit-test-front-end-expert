@@ -1,5 +1,6 @@
 class FavoriteMovieSearchPresenter {
-  constructor({ favoriteMovies }) {
+  constructor({ favoriteMovies, view }) {
+    this._view = view;
     this._listenToSearchRequestByUser();
     this._favoriteMovies = favoriteMovies;
   }
