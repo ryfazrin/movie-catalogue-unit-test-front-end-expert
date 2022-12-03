@@ -36,7 +36,7 @@ const FavoriteMovieArray = {
   },
 };
 
-describe('Favorite Movie Idb Contract Test Implementation', () => {
+xdescribe('Favorite Movie Idb Contract Test Implementation', () => {
   afterEach(() => {
     favoriteMovies = [];
   });
