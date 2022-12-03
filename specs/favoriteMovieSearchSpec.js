@@ -1,6 +1,20 @@
 import FavoriteMovieSearchPresenter from '../src/scripts/views/pages/liked-movies/favorite-movie-search-presenter';
 import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 
+class FavoriteMovieSearchView {
+  getTemplate() {
+    return `
+      <div id="movie-search-container">
+        <input id="query" type="text">
+        <div class="movie-result-container">
+          <ul class="movies">
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+}
+
 describe('Search movies', () => {
   let presenter;
   let favoriteMovies;
@@ -12,14 +26,8 @@ describe('Search movies', () => {
   };
 
   const setMovieSearchContainer = () => {
-    document.body.innerHTML = `
-      <div id="movie-search-container">
-        <input type="text" id="query">
-        <div class="movie-result-container">
-          <ul class="movies"></ul>
-        </div>
-      </div>
-    `;
+    const view = new FavoriteMovieSearchView();
+    document.body.innerHTML = view.getTemplate();
   };
 
   const constructPresenter = () => {
@@ -119,12 +127,12 @@ describe('Search movies', () => {
           expect(document.querySelectorAll('.movies__not__found').length).toEqual(1);
           done();
         });
- 
+
       favoriteMovies.searchMovies.withArgs('film a').and.returnValues([]);
- 
+
       searchMovies('film a');
     });
- 
+
     it('should not show any movie', (done) => {
       document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
         expect(document.querySelectorAll('.movie').length).toEqual(0);

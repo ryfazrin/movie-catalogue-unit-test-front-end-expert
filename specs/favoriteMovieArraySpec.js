@@ -1,4 +1,3 @@
-import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 import { itActsAsFavoriteMovieModel } from './contract/favoriteMovieContract';
 
 let favoriteMovies = [];
