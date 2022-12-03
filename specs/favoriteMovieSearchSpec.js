@@ -108,7 +108,7 @@ describe('Search movies', () => {
     it('should show all favorite movies', () => {
       searchMovies('    ');
 
-      expect(favoriteMovies.getAllMovies).toHaveBeenCalled();
+      expect(favoriteMovies.getAllMovies).toHaveBeenCalledTimes(1);
     });
   });
 });
