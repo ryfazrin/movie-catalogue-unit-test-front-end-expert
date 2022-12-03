@@ -44,7 +44,7 @@ describe('Search movies', () => {
     it('should ask the model to search for liked movies', () => {
       searchMovies('film a');
 
-      expect(FavoriteMovieIdb.searchMovies).toHaveBeenCalledWith('film a');
+      expect(favoriteMovies.searchMovies).toHaveBeenCalledWith('film a');
     });
 
     it('should show the title of the found movies', () => {
@@ -80,7 +80,7 @@ describe('Search movies', () => {
           done();
         });
 
-      FavoriteMovieIdb.searchMovies.withArgs('film a').and.returnValues([
+      favoriteMovies.searchMovies.withArgs('film a').and.returnValues([
         { id: 111, title: 'film abc' },
         { id: 222, title: 'ada juga film abcde' },
         { id: 333, title: 'ini juga boleh film a' },
@@ -103,6 +103,12 @@ describe('Search movies', () => {
 
       searchMovies('\t');
       expect(presenter.latestQuery.length).toEqual(0);
+    });
+
+    it('should show all favorite movies', () => {
+      searchMovies('    ');
+
+      expect(favoriteMovies.getAllMovies).toHaveBeenCalled();
     });
   });
 });
