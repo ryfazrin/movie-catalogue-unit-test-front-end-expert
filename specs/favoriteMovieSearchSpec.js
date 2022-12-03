@@ -13,6 +13,12 @@ class FavoriteMovieSearchView {
       </div>
     `;
   }
+
+  runWhenUserIsSearching(callback) {
+    document.getElementById('query').addEventListener('change', (event) => {
+      callback(event.target.value);
+    });
+  }
 }
 
 describe('Search movies', () => {
