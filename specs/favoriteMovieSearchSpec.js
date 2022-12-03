@@ -92,7 +92,15 @@ describe('Search movies', () => {
   describe('When query is empty', () => {
     it('should capture the query as empty', () => {
       searchMovies(' ');
+      expect(presenter.latestQuery.length).toEqual(0);
 
+      searchMovies('    ');
+      expect(presenter.latestQuery.length).toEqual(0);
+
+      searchMovies('');
+      expect(presenter.latestQuery.length).toEqual(0);
+
+      searchMovies('\t');
       expect(presenter.latestQuery.length).toEqual(0);
     });
   });
