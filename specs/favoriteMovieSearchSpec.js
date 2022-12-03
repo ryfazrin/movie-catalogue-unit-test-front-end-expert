@@ -3,6 +3,7 @@ import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 
 describe('Search movies', () => {
   let presenter;
+  let favoriteMovies;
 
   const searchMovies = (query) => {
     const queryElement = document.getElementById('query');
@@ -22,9 +23,9 @@ describe('Search movies', () => {
   };
 
   const constructPresenter = () => {
-    spyOn(FavoriteMovieIdb, 'searchMovies');
+    favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
     presenter = new FavoriteMovieSearchPresenter({
-      favoriteMovies: FavoriteMovieIdb,
+      favoriteMovies,
     });
   };
 
