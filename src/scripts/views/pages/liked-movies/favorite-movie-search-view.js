@@ -32,6 +32,7 @@ class FavoriteMovieSearchView {
 
     document.getElementById('movie-search-container')
       .dispatchEvent(new Event('movies:searched:updated'));
+      document.getElementById('movies').dispatchEvent(new Event('movies:updated'));
   }
 
   showFavoriteMovies(movies = []) {

@@ -45,7 +45,7 @@ describe('Search movies', () => {
     });
 
     it('should show - when the movie returned does not contain a title', (done) => {
-      document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
+      document.getElementById('movies').addEventListener('movies:updated', () => {
         const movieTitles = document.querySelectorAll('.movie__title');
         expect(movieTitles.item(0).textContent).toEqual('-');
 
@@ -96,7 +96,7 @@ describe('Search movies', () => {
     });
 
     it('should not show any movie', (done) => {
-      document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
+      document.getElementById('movies').addEventListener('movies:updated', () => {
         expect(document.querySelectorAll('.movie').length).toEqual(0);
         done();
       });
