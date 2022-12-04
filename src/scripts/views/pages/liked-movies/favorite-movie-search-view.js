@@ -21,16 +21,7 @@ class FavoriteMovieSearchView {
   }
 
   showMovies(movies) {
-    let html;
-    if (movies.length > 0) {
-      html = movies.reduce((carry, movie) => carry.concat(createMovieItemTemplate(movie)), '');
-    } else {
-      html = this._getEmptyMovieTemplate();
-    }
-
-    document.querySelector('.movies').innerHTML = html;
-
-    document.getElementById('movies').dispatchEvent(new Event('movies:updated'));
+    this.showFavoriteMovies(movies);
   }
 
   showFavoriteMovies(movies = []) {
