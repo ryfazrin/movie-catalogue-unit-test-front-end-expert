@@ -28,7 +28,7 @@ class FavoriteMovieSearchView {
         '',
       );
     } else {
-      html = '<div class="movie-item__not__found movies__not__found">Tidak ada film untuk ditampilkan</div>';
+      html = this._getEmptyMovieTemplate();
     }
 
     document.querySelector('.movies').innerHTML = html;
@@ -42,11 +42,15 @@ class FavoriteMovieSearchView {
     if (movies.length) {
       html = movies.reduce((carry, movie) => carry.concat(createMovieItemTemplate(movie)), '');
     } else {
-      html = '<div class="movie-item__not__found movies__not__found">Tidak ada film untuk ditampilkan</div>';
+      html = this._getEmptyMovieTemplate();
     }
     document.getElementById('movies').innerHTML = html;
 
     document.getElementById('movies').dispatchEvent(new Event('movies:updated'));
+  }
+
+  _getEmptyMovieTemplate() {
+    return '<div class="movie-item__not__found movies__not__found">Tidak ada film untuk ditampilkan</div>';
   }
 }
 
