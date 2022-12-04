@@ -13,6 +13,8 @@ Scenario('liking one movie', ({ I }) => {
   I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
 
   I.amOnPage('/');
+
+  I.waitForElement(".movie__title a", 10);
   
   I.seeElement('.movie__title a');
   I.click(locate('.movie__title a').first());
