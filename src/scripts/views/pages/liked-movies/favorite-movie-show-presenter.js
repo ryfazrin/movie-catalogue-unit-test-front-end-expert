@@ -4,7 +4,7 @@ class FavoriteMovieShowPresenter {
   }
 
   _displayMovies(movies) {
-
+    this._view.showFavoriteMovies(movies);
   }
 }
 

@@ -43,6 +43,10 @@ class FavoriteMovieSearchView {
     document.getElementById('movie-search-container')
       .dispatchEvent(new Event('movies:searched:updated'));
   }
+
+  showFavoriteMovies(movies) {
+    document.getElementById('movies').innerHTML = '<div class="movie-item__not__found"></div>';
+  }
 }
 
 export default FavoriteMovieSearchView;
