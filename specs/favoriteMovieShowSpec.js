@@ -7,7 +7,7 @@ describe('Showing all favorite movies', () => {
 
   const rendertemplate = () => {
     view = new FavoriteMovieSearchView();
-    document.body.innerHTML = view.getFavoriteMovieTemplate();
+    document.body.innerHTML = view.getTemplate();
   };
 
   beforeEach(() => {
