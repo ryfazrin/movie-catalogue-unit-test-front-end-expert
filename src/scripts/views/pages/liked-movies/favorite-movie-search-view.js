@@ -50,7 +50,7 @@ class FavoriteMovieSearchView {
   }
 
   _getEmptyMovieTemplate() {
-    return '<div class="movie-item__not__found movies__not__found">Tidak ada film untuk ditampilkan</div>';
+    return '<div class="movie-item__not__found">Tidak ada film untuk ditampilkan</div>';
   }
 }
 
