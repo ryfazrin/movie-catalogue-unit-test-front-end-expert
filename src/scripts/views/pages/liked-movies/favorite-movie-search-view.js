@@ -6,9 +6,7 @@ class FavoriteMovieSearchView {
     <div class="content">
       <input type="text" id="query">
       <h2 class="content__heading">Your Liked Movie</h2>
-      <div id="movie-search-container">
-        <div id="movies" class="movies">
-        </div>
+      <div id="movies" class="movies">
       </div>
     </div>
     `;
