@@ -40,5 +40,20 @@ describe('Showing all favorite movies', () => {
 
       expect(favoriteMovies.getAllMovies).toHaveBeenCalledTimes(1);
     });
+
+    it('should show the information that no movies have been liked', (done) => {
+      document.getElementById('movies').addEventListener('movies:updated', () => {
+        expect(document.querySelectorAll('.movie-item__not__found').length).toEqual(1);
+        done();
+      });
+
+      const favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
+      favoriteMovies.getAllMovies.and.returnValues([]);
+
+      new FavoriteMovieShowPresenter({
+        view,
+        favoriteMovies,
+      });
+    });
   });
 });
