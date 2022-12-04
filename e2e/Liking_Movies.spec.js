@@ -13,4 +13,5 @@ Scenario('liking one movie', ({ I }) => {
   I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
 
   I.amOnPage('/');
+  pause();
 });
