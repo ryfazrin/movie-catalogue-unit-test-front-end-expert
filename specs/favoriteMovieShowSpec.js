@@ -56,4 +56,31 @@ describe('Showing all favorite movies', () => {
       });
     });
   });
+
+  describe('When favorite movies exist', () => {
+    it('should render the movies', () => {
+      const favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
+      const presenter = new FavoriteMovieShowPresenter({
+        view,
+        favoriteMovies,
+      });
+
+      presenter._displayMovies([
+        {
+          id: 11,
+          title: 'A',
+          vote_average: 3,
+          overview: 'Sebuah film A',
+        },
+        {
+          id: 22,
+          title: 'B',
+          vote_average: 4,
+          overview: 'Sebuah film B',
+        },
+      ]);
+
+      expect(document.querySelectorAll('.movie-item').length).toEqual(2);
+    });
+  });
 });
