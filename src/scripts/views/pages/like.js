@@ -12,7 +12,7 @@ const Like = {
 
   async afterRender() {
     new FavoriteMovieShowPresenter({ view, favoriteMovies: FavoriteMovieIdb });
-    new FavoriteMovieSearchPresenter({ view, favoriteMovies: FavoriteMovieIdb })
+    new FavoriteMovieSearchPresenter({ view, favoriteMovies: FavoriteMovieIdb });
   },
 };
 
