@@ -16,8 +16,11 @@ describe('Showing all favorite movies', () => {
 
   describe('When no movies have been liked', () => {
     it('should render the information that no movies have been liked', () => {
+      const favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
+
       const presenter = new FavoriteMovieShowPresenter({
         view,
+        favoriteMovies,
       });
 
       const movies = [];
@@ -27,7 +30,7 @@ describe('Showing all favorite movies', () => {
         .toEqual(1);
     });
 
-    fit('should ask for the favorite movies', () => {
+    it('should ask for the favorite movies', () => {
       const favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
 
       new FavoriteMovieShowPresenter({
