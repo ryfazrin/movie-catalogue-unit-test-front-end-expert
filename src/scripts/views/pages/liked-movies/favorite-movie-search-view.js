@@ -24,7 +24,7 @@ class FavoriteMovieSearchView {
     let html;
     if (movies.length > 0) {
       html = movies.reduce(
-        (carry, movie) => carry.concat(`<li class="movie"><span class="movie__title">${movie.title || '-'}</span></li>`),
+        (carry, movie) => carry.concat(createMovieItemTemplate(movie)),
         '',
       );
     } else {
