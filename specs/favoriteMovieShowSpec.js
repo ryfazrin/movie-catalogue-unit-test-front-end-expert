@@ -1,3 +1,4 @@
+import FavoriteMovieIdb from '../src/scripts/data/favorite-movie-idb';
 import FavoriteMovieSearchView from '../src/scripts/views/pages/liked-movies/favorite-movie-search-view';
 import FavoriteMovieShowPresenter from '../src/scripts/views/pages/liked-movies/favorite-movie-show-presenter';
 
@@ -24,6 +25,17 @@ describe('Showing all favorite movies', () => {
 
       expect(document.querySelectorAll('.movie-item__not__found').length)
         .toEqual(1);
+    });
+
+    fit('should ask for the favorite movies', () => {
+      const favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb);
+
+      new FavoriteMovieShowPresenter({
+        view,
+        favoriteMovies,
+      });
+
+      expect(favoriteMovies.getAllMovies).toHaveBeenCalledTimes(1);
     });
   });
 });
