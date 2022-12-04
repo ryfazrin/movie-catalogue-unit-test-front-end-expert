@@ -86,7 +86,7 @@ describe('Search movies', () => {
     it('should show the empty message', (done) => {
       document.getElementById('movie-search-container')
         .addEventListener('movies:searched:updated', () => {
-          expect(document.querySelectorAll('.movies__not__found').length).toEqual(1);
+          expect(document.querySelectorAll('.movie-item__not__found').length).toEqual(1);
           done();
         });
 
