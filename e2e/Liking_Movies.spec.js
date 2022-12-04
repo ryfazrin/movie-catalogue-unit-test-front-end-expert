@@ -18,4 +18,7 @@ Scenario('liking one movie', ({ I }) => {
   
   I.seeElement('.movie__title a');
   I.click(locate('.movie__title a').first());
+
+  I.seeElement('#likeButton');
+  I.click('#likeButton');
 });
