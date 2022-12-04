@@ -23,10 +23,7 @@ class FavoriteMovieSearchView {
   showMovies(movies) {
     let html;
     if (movies.length > 0) {
-      html = movies.reduce(
-        (carry, movie) => carry.concat(createMovieItemTemplate(movie)),
-        '',
-      );
+      html = movies.reduce((carry, movie) => carry.concat(createMovieItemTemplate(movie)), '');
     } else {
       html = this._getEmptyMovieTemplate();
     }
