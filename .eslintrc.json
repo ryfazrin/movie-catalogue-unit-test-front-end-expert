@@ -26,6 +26,6 @@
     "no-new": 0
   },
   "plugins": [
-    "jasmine"
+    "jasmine", "codecept"
   ]
 }
