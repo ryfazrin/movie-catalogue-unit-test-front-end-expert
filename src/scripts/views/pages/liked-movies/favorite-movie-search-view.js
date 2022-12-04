@@ -11,6 +11,10 @@ class FavoriteMovieSearchView {
     `;
   }
 
+  getFavoriteMovieTemplate() {
+    return ``;
+  }
+
   runWhenUserIsSearching(callback) {
     document.getElementById('query').addEventListener('change', (event) => {
       callback(event.target.value);
