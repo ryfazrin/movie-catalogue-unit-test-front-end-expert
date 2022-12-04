@@ -1,3 +1,5 @@
+import { createMovieItemTemplate } from "../../templates/template-creator";
+
 class FavoriteMovieSearchView {
   getTemplate() {
     return `
@@ -44,8 +46,14 @@ class FavoriteMovieSearchView {
       .dispatchEvent(new Event('movies:searched:updated'));
   }
 
-  showFavoriteMovies(movies) {
-    document.getElementById('movies').innerHTML = '<div class="movie-item__not__found"></div>';
+  showFavoriteMovies(movies = []) {
+    let html;
+    if (movies.length) {
+      html = movies.reduce((carry, movie) => carry.concat(createMovieItemTemplate(movie)), '');
+    } else {
+      html = '<div class="movie-item__not__found"></div>';
+    }
+    document.getElementById('movies').innerHTML = html;
 
     document.getElementById('movies').dispatchEvent(new Event('movies:updated'));
   }
