@@ -28,7 +28,7 @@ class FavoriteMovieSearchView {
         '',
       );
     } else {
-      html = '<div class="movies__not__found">Film tidak ditemukan</div>';
+      html = '<div class="movie-item__not__found movies__not__found">Tidak ada film untuk ditampilkan</div>';
     }
 
     document.querySelector('.movies').innerHTML = html;
@@ -42,7 +42,7 @@ class FavoriteMovieSearchView {
     if (movies.length) {
       html = movies.reduce((carry, movie) => carry.concat(createMovieItemTemplate(movie)), '');
     } else {
-      html = '<div class="movie-item__not__found"></div>';
+      html = '<div class="movie-item__not__found movies__not__found">Tidak ada film untuk ditampilkan</div>';
     }
     document.getElementById('movies').innerHTML = html;
 
