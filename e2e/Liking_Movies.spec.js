@@ -33,3 +33,24 @@ Scenario('liking one movie', async ({ I }) => {
   
   assert.strictEqual(firstFilmTitle, likedFilmTitle);
 });
+
+Scenario('searching movies', async ({ I }) => {
+  I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
+ 
+  I.amOnPage('/');
+ 
+  I.seeElement('.movie__title a');
+ 
+  const titles = [];
+ 
+  for (let i = 1; i <= 3; i++) {
+    I.click(locate('.movie__title a').at(i));
+    I.seeElement('#likeButton');
+    I.click('#likeButton');
+    titles.push(await I.grabTextFrom('.movie__title'));
+    I.amOnPage('/');
+  }
+ 
+  I.amOnPage('/#/like');
+  I.seeElement('#query');
+});
