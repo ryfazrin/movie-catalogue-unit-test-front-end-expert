@@ -84,11 +84,10 @@ describe('Search movies', () => {
 
   describe('When no favorite movies could be found', () => {
     it('should show the empty message', (done) => {
-      document.getElementById('movie-search-container')
-        .addEventListener('movies:searched:updated', () => {
-          expect(document.querySelectorAll('.movie-item__not__found').length).toEqual(1);
-          done();
-        });
+      document.getElementById('movies').addEventListener('movies:updated', () => {
+        expect(document.querySelectorAll('.movie-item__not__found').length).toEqual(1);
+        done();
+      });
 
       favoriteMovies.searchMovies.withArgs('film a').and.returnValues([]);
 

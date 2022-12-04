@@ -30,9 +30,7 @@ class FavoriteMovieSearchView {
 
     document.querySelector('.movies').innerHTML = html;
 
-    document.getElementById('movie-search-container')
-      .dispatchEvent(new Event('movies:searched:updated'));
-      document.getElementById('movies').dispatchEvent(new Event('movies:updated'));
+    document.getElementById('movies').dispatchEvent(new Event('movies:updated'));
   }
 
   showFavoriteMovies(movies = []) {
