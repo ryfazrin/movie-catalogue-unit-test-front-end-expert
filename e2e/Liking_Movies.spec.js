@@ -6,33 +6,33 @@ Before(({ I }) => {
   I.amOnPage('/#/like');
 });
 
-Scenario('showing empty liked movies', ({ I }) => {
-  I.seeElement('#query');
-  I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
-});
+// Scenario('showing empty liked movies', ({ I }) => {
+//   I.seeElement('#query');
+//   I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
+// });
 
-Scenario('liking one movie', async ({ I }) => {
-  I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
+// Scenario('liking one movie', async ({ I }) => {
+//   I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
 
-  I.amOnPage('/');
+//   I.amOnPage('/');
 
-  I.waitForElement(".movie__title a", 10);
+//   I.waitForElement(".movie__title a", 10);
   
-  I.seeElement('.movie__title a');
+//   I.seeElement('.movie__title a');
   
-  const firstFilm = locate('.movie__title a').first();
-  const firstFilmTitle = await I.grabTextFrom(firstFilm);
-  I.click(firstFilm);
+//   const firstFilm = locate('.movie__title a').first();
+//   const firstFilmTitle = await I.grabTextFrom(firstFilm);
+//   I.click(firstFilm);
 
-  I.seeElement('#likeButton');
-  I.click('#likeButton');
+//   I.seeElement('#likeButton');
+//   I.click('#likeButton');
 
-  I.amOnPage('/#/like');
-  I.seeElement('.movie-item');
-  const likedFilmTitle = await I.grabTextFrom('.movie__title');
+//   I.amOnPage('/#/like');
+//   I.seeElement('.movie-item');
+//   const likedFilmTitle = await I.grabTextFrom('.movie__title');
   
-  assert.strictEqual(firstFilmTitle, likedFilmTitle);
-});
+//   assert.strictEqual(firstFilmTitle, likedFilmTitle);
+// });
 
 Scenario('searching movies', async ({ I }) => {
   I.see('Tidak ada film untuk ditampilkan', '.movie-item__not__found');
@@ -56,4 +56,18 @@ Scenario('searching movies', async ({ I }) => {
  
   I.amOnPage('/#/like');
   I.seeElement('#query');
+
+  const searchQuery = titles[1].substring(1, 3);
+  const matchingMovies = titles.filter((title) => title.indexOf(searchQuery) !== -1);
+
+  I.fillField('#query', searchQuery);
+  I.pressKey('Enter');
+
+  const visibleLikedMovies = await I.grabNumberOfVisibleElements('.movie-item');
+  assert.strictEqual(matchingMovies.length, visibleLikedMovies);
+
+  matchingMovies.forEach(async (title, index) => {
+    const visibleTitle = await I.grabTextFrom(locate('.movie__title').at(index + 1));
+    assert.strictEqual(title, visibleTitle);
+  });
 });
