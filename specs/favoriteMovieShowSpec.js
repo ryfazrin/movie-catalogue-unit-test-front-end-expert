@@ -82,5 +82,32 @@ describe('Showing all favorite movies', () => {
 
       expect(document.querySelectorAll('.movie-item').length).toEqual(2);
     });
+
+    it('should show the movies', (done) => {
+      document.getElementById('movies').addEventListener('movies:updated', () => {
+        expect(document.querySelectorAll('.movie-item').length).toEqual(2);
+        done();
+      });
+      const favoriteMovies = spyOnAllFunctions(FavoriteMovieIdb, false);
+      favoriteMovies.getAllMovies.and.returnValues([
+        {
+          id: 11,
+          title: 'A',
+          vote_average: 3,
+          overview: 'Sebuah film A',
+        },
+        {
+          id: 22,
+          title: 'B',
+          vote_average: 4,
+          overview: 'Sebuah film B',
+        },
+      ]);
+
+      new FavoriteMovieShowPresenter({
+        view,
+        favoriteMovies,
+      });
+    });
   });
 });
