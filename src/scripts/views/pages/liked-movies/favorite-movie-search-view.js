@@ -12,7 +12,13 @@ class FavoriteMovieSearchView {
   }
 
   getFavoriteMovieTemplate() {
-    return ``;
+    return `
+      <div class="content">
+        <h2 class="content__heading">Your Liked Movie</h2>
+        <div id="movies" class="movies">
+        </div>
+      </div>
+    `;
   }
 
   runWhenUserIsSearching(callback) {
